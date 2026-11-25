@@ -119,5 +119,5 @@ Save the labels as `eval/labels.json`, with the bullets in the same order as in 
 Tell Claude the recordings, `eval/cards.json` and `eval/labels.json` are in place, and that `.env.local` has both keys. The eval build then:
 
 1. Transcribes each recording once and freezes the transcript in `eval/transcripts/` (git-ignored), plus a second transcription to check Whisper on its own.
-2. Grades each transcript 5 times with each of the three grader setups.
+2. Splits the recordings at random into a tuning set (about two thirds) and a held-back check set (about one third), then grades each transcript 5 times with each of the three grader setups.
 3. Prints the scorecard against the plan's targets, and tunes the grader until every target passes.

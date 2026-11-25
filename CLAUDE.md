@@ -13,7 +13,7 @@ A personal web app for practicing interview answers out loud with spaced repetit
 - **Latency:** under 10s from stopping the recording to seeing the graded result (95th percentile). The grader call alone should stay under 2s.
 - **Cost:** $10/month is the absolute maximum for all API spending combined (grading, transcription, AI bullet drafting, timed-out calls). It's enforced in code by the cost ledger, checked before every paid call, so the total never goes over $10. At $9.50, grading and AI drafting turn off, and transcription keeps running until $10. At $10, every paid call stops. Skip and self-rate always work.
 - **Single user:** Supabase Auth with sign-ups disabled. Don't add multi-user features.
-- **Not stored:** audio, transcripts, per-bullet grading results. Show them, then discard them. Only cards, FSRS state, the review log (card, date, rating, suggestedRating, time used, coverage %, selfRated, sameDayRetry), the daily cost ledger (dollars per day, split by transcription, grading and AI drafting) and one settings row are stored. The Dashboard page is worked out from these. Don't add new stored data for it.
+- **Not stored:** audio, transcripts, per-bullet grading results. Show them, then discard them. The one exception is a review the owner flags with the Flag button: its transcript, per-bullet marks and the owner's corrections are kept for grader tuning, never its audio. Only cards, FSRS state, the review log (card, date, rating, suggestedRating, time used, coverage %, selfRated, sameDayRetry), the daily cost ledger (dollars per day, split by transcription, grading and AI drafting), one settings row and flagged reviews are stored. The Dashboard page is worked out from these. Don't add new stored data for it.
 
 ## Stack
 

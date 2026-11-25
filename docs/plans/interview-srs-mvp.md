@@ -65,6 +65,7 @@ Import format:
 7. The suggested rating is highlighted as the default. Confirming it takes one key.
 
 8. If you pick a different rating from the suggested one, both are logged (`suggestedRating` and `rating`), so everyday use shows how often you agree with the grader.
+9. **Flag this grade:** on any graded result you disagree with, a Flag button saves that one review for grader tuning (see Grader eval → Flagged reviews). You can add a short note and correct the per-bullet marks.
 
 Daily limits: **3 new cards and a maximum of 15 reviews** (based on 30 minutes a day). Both are configurable.
 - The two limits are separate, as in Anki: new cards don't count toward the 15 reviews. A calm day is at most 15 reviews plus 3 new cards. Settings says this next to the limits.
@@ -252,7 +253,9 @@ Examples:
 - A daily cost ledger: one row per day per category (transcription, grading, AI drafting) with the estimated dollars. The monthly total for the cap is the sum of the month's rows. Days are counted in local time.
 - Settings, as one row: daily limits, `maxGapDays`, rating thresholds, the over-target grace %, and default target length per card type
 
-**Not stored:** audio, transcripts, per-bullet results. They're shown on screen and then discarded.
+- Flagged reviews: only the reviews you flag, with the card, the transcript, the grader's per-bullet marks and quotes, your corrected marks and your note. No audio.
+
+**Not stored:** audio, transcripts, per-bullet results. They're shown on screen and then discarded. The one exception is a review you flag, which is kept for grader tuning until you delete it or it's turned into an eval case.
 
 **Cost cap:** a running estimate based on audio seconds and token usage, covering every paid call: grading, transcription, AI bullet drafting and timed-out calls. **$10/month is the absolute maximum for everything combined.**
 
@@ -285,6 +288,37 @@ Examples:
 - **Frozen transcripts:** each recording is transcribed once and the transcript is frozen, so transcription and grading errors stay separate. Transcription is tested on its own by transcribing each recording twice.
 - **Repeats:** each transcript is graded 5 times. A full run costs about $0.06.
 - Re-run on every prompt, model or example change. The same script compares Haiku with thinking off, Haiku at low effort, and Groq Llama.
+
+### Held-back check set
+
+- The eval cases are split once, at random and spread across card types: about two thirds **tuning set**, about one third **check set**. With 30 recordings that's about 20 and 10.
+- Both sets are scored every round. Only the tuning set's transcripts and results are read when deciding what to change. The check set is never read, so it stands for answers the grader hasn't been tuned on.
+- A change is kept only if the check set doesn't get worse. A tuning-set gain with a flat check set means the change memorized specific answers, and it's undone.
+- The split is fixed once drawn. New flagged cases are split the same way as they're added.
+- Caveat: a 10-case check set catches clear backfires but can't separate small differences. It gets more useful as flagged cases grow the set.
+- Before the first change, the unchanged grader is run twice to measure run-to-run noise. A change has to beat that noise to count.
+
+### Flagged reviews
+
+- Reviews you flag in the app become new eval cases. Your corrected per-bullet marks are their answer key, confirmed by you before they're added.
+- Because transcripts are frozen anyway, a flagged case needs no audio.
+- The Dashboard's grader-agreement number (suggested vs final rating, already in the review log) shows when the grader has drifted lenient or strict, which is the signal to flag cases and run a tuning round.
+
+### Feedback tuning agent (after the first tuning round)
+
+Built only after the first round of tuning is done together, so the agent copies a loop that has actually been run. It's a project agent in `.claude/agents/` that follows the claude-api skill's hillclimb workflow.
+
+Each run:
+1. Pulls the flagged reviews and shows them to you to confirm the corrected marks.
+2. Finds the pattern (for example, keyword-only answers marked hit), and makes **one** change to the grader's system prompt or calibration examples.
+3. Runs the full eval: the original recordings plus every flagged case, with the held-back check set deciding whether the change is kept.
+4. Shows before-and-after scores. Nothing ships until you approve.
+
+Rules:
+- It never edits labels, ratings or cards.
+- A change that makes any eval metric worse is rejected, including on older cases.
+- Calibration examples stay generic and never copy card content. The system prompt has a length budget.
+- One change per round, and a spending limit per session (default $1) that it asks before exceeding.
 
 | Metric | Target |
 |---|---|
