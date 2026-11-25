@@ -1,2 +1,10 @@
 # throwaway mockups from the prototyper agent
 prototypes/
+
+# secrets: only .env.example is committed
+.env*
+!.env.example
+
+# eval audio and frozen transcripts stay on the owner's machine
+eval/recordings/
+eval/transcripts/

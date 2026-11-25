@@ -320,8 +320,8 @@ Examples:
 
 ## Build order
 
-1. Scaffold Next.js, the Supabase schema (cards, FSRS state, review log, daily cost ledger) and sign-in.
-2. Record and label the eval set. Build the transcription and grading pipeline and `npm run eval`, and tune until every target is met.
+1. Build the grader eval first, before the app. It needs only the Groq and Anthropic keys, no database. Record and label the eval set (see `docs/eval-prep.md`), build the transcription and grading pipeline and `npm run eval`, and tune until every target is met.
+2. Scaffold Next.js, the Supabase schema (cards, FSRS state, review log, daily cost ledger, settings) and sign-in, and move the tuned pipeline into the app.
 3. Build the Add Card page with AI bullet drafting, and JSON import with the preview and the published prompt.
 4. Build the review loop: daily queue, Record/Skip, feedback, rating confirmation, FSRS with the scheduling settings and the four balancing mechanisms, same-day retries of Again cards, and the Cards page with Add to today.
 5. Add the cost ledger and cap, tag filtering, and the Dashboard page.
