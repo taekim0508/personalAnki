@@ -42,6 +42,7 @@ Why not existing tools: Anki has no spoken-answer grading. Mock interviews and v
   - One at a time on the Add Card page, with "draft bullets with AI."
   - **Bulk JSON import from day one.** The app publishes the JSON format as a ready-made prompt to paste into an AI.
 - **Import preview:** imported cards appear in a list to edit or approve before saving, with duplicate questions flagged.
+- **Editing and deleting:** any card can be edited or deleted from the Cards page. Deleting removes its scheduling state too. Its review-log rows stay so past stats don't change.
 
 Import format:
 
@@ -63,18 +64,28 @@ Import format:
    - Words per minute, filler-word count, thinking time, and time used against the target.
 7. The suggested rating is highlighted as the default. Confirming it takes one key.
 
+8. If you pick a different rating from the suggested one, both are logged (`suggestedRating` and `rating`), so everyday use shows how often you agree with the grader.
+
 Daily limits: **3 new cards and a maximum of 15 reviews** (based on 30 minutes a day). Both are configurable.
+- The two limits are separate, as in Anki: new cards don't count toward the 15 reviews. A calm day is at most 15 reviews plus 3 new cards. Settings says this next to the limits.
+- **Queue order:** cards you added to today, then due cards (most at risk first, see Scheduling), then new cards.
+- A tag filter narrows the queue but keeps the same limits.
 
 **Same-day retries of Again cards:**
 - Same-day repeats are off in FSRS (`enable_short_term: false`), so every rating, including Again, schedules the card at least 1 day out.
 - A card rated Again is also marked "Retry today" and offered as an optional retry after the day's queue is done.
-- A retry is available only while the daily review limit has room and the cost cap hasn't been reached. It counts toward the daily review limit.
+- **Retries are unlimited**, as many per card per day as you like.
+- Each retry counts toward the 15-review daily limit. A retry is available only while that limit has room and spending is under $9.50, since a retry is only worth doing if it's graded.
+- On a full day (for example, one with overflow) there's no room, so no retries are offered. The done screen says why.
 - A retry is graded and shown like any review, and logged with `sameDayRetry: true`. It **doesn't change the FSRS schedule**, so the card still comes back on the date set by the original Again.
+- **Retry counts are visible:** the Cards page and the Dashboard show each card's retry count, counted from the review log. It costs nothing extra.
+- Retries are left out of success rate and rating counts, so practicing a card you just failed doesn't inflate your numbers.
 
 **Adding a card to today ("Practice today"):**
 - A Cards page lists every card with its next due date and an **Add to today** button.
-- The card joins today's queue, even if it isn't due for two weeks.
+- The card joins today's queue, even if it isn't due for two weeks. A new card can be added too, outside the new-card limit.
 - It doesn't count toward the 15-review daily limit, since you chose it.
+- In today's queue, a card you added shows **Remove from today** instead of Push to tomorrow.
 - It's limited only by the cost cap. Below $9.50 it's graded as usual. From $9.50 it's transcribed and you rate yourself. At $10 you can still practice it, but nothing is uploaded.
 - It's a **real review**: the rating updates FSRS, and the next due date is set from today. FSRS accounts for reviewing early, so remembering a card a few days after you last saw it doesn't push it out further than usual.
 
@@ -85,6 +96,8 @@ The goal is to keep every answer fresh, not to space cards out for years. **By d
 ### Maximum gap (a setting)
 
 `maxGapDays` is a setting with a default of 14. Keep it at 14 while you're actively interviewing. Raise it to 30–60 between job searches, so well-known cards drift further out and the deck can hold more cards.
+
+**Lowering it pulls cards in.** When you save a lower maximum (for example, from 60 back to 14 because an interview is coming), every card due later than the new maximum is rescheduled within it. The load balancer spreads those cards across the days, so they don't all land on the last one. Raising the maximum changes nothing until the next rating.
 
 `ts-fsrs` settings:
 - `enable_short_term: false`: no same-day repeats, so the minimum gap is 1 day.
@@ -119,7 +132,8 @@ If you rate a card the same every time:
 New and just-failed cards come back after 1–4 days whatever the maximum gap is, so starting many new cards at once causes a pile-up a few days later. Four mechanisms, modeled on Anki's, keep each day's load close to the daily limit.
 
 1. **New cards start only when there's room.**
-   - Each day, up to the new-card limit (default 3) is introduced. A new card is added only if the forecast for each of the next 3 days stays at or under the daily review limit. The forecast counts cards already due plus the expected follow-ups of today's new cards.
+   - Each day, up to the new-card limit (default 3) is introduced. A new card is added only if the forecast for each of the next 3 days stays at or under the daily review limit.
+   - The forecast counts cards already due that day, plus any overflow carried forward from earlier days, plus the expected follow-ups of today's new cards. Each new card's follow-up is counted on day 3, its gap if rated Good. Because overflow is carried forward, a pile-up blocks new cards until it clears.
    - If there isn't room, fewer new cards start today, possibly none. Today's page says how many were held back and why.
    - Held-back cards stay in the new pile in their original order.
 2. **Overflow rolls forward, most at risk first.**
@@ -127,11 +141,13 @@ New and just-failed cards come back after 1–4 days whatever the maximum gap is
    - The rest stay due and show up again tomorrow, ahead of cards that only become due tomorrow. They aren't rescheduled. FSRS accounts for the extra days when they're reviewed.
 3. **Load balancer.**
    - After a rating, if the gap is 3 days or more, code looks at nearby days and moves the due date to the one with the fewest cards due. It looks ±1 day, or ±2 days when the gap is 7 days or more.
-   - It never goes below 1 day or past `maxGapDays`. Ties keep the original date.
+   - It never goes below 1 day, past the rating's own maximum (Hard, Good or Easy, see above) or past `maxGapDays`. So a Good card on an 11-day gap can move earlier but never to 12 or 13 days. Ties keep the original date.
    - This is what stops cards studied together from all coming back on the same day.
 4. **Push to tomorrow.**
    - Each card in today's queue has a **Push to tomorrow** button. It moves the card's due date to tomorrow without reviewing it.
    - It isn't an FSRS review and isn't logged, so FSRS sees a longer gap when you do review the card and schedules it accordingly.
+   - **No refill:** a pushed card's slot stays empty. Overflow cards don't move up, so pushing actually makes today lighter. To do more, use Add to today.
+   - A pushed new card goes back to its place in the new pile.
 
 The Dashboard's 14-day forecast shows the effect, so you can see a busy day coming before adding cards with "Add to today".
 
@@ -140,19 +156,20 @@ The Dashboard's 14-day forecast shows the effect, so you can see a busy day comi
 Its own page in the top navigation: **Today | Cards | Dashboard**. Everything on it is worked out from the review log and the daily cost ledger, so it needs nothing else stored.
 
 **Budget:**
-- This month's spend against the $10 cap, with what's left. It's split into **transcription** (Groq), **grading** (Haiku) and **AI bullet drafting**, each with its own total.
-- **Room today:** today's spend against an even daily share, which is what's left this month divided by the days left. If you skipped a day, the share grows, and the page shows roughly how many extra reviews that buys at your average cost per review.
-- Average cost per review, and how many more reviews the remaining budget covers at that rate.
+- **Headline:** this month's spend against the $10 cap, and average cost per review. It's split into **transcription** (Groq), **grading** (Haiku) and **AI bullet drafting**, each with its own total.
+- **Room today** (secondary, kept simple): today's spend against an even daily share, which is what's left this month divided by the days left, with roughly how many reviews that buys. At about $0.002 per review the budget almost never binds, so time, not money, is the usual limit.
+- How many more reviews the remaining budget covers at the average rate.
 - A bar chart of cost per day this month, with each bar split into transcription and grading.
 
 **Activity:**
 - A GitHub-style **heatmap**: one square per day, shaded by the number of reviews. Hovering or tapping a day shows its reviews, success rate and cost (transcription and grading). It switches between a month view and a year view.
-- **Streak:** the current and longest run of days with at least one review.
+- **Streak:** the current and longest run of days with at least one review. If today has no reviews yet, the current streak counts through yesterday.
 
 **Performance:**
-- **Success rate:** the share of reviews rated Good or Easy, for today, this week, this month and all time. Graded and self-rated reviews are shown separately.
-- How often each rating was given (Again, Hard, Good, Easy), and average coverage.
-- **Cards you've gone through:** each card's review count, last rating, success rate and next due date. It can be sorted, and the weakest cards (most Again ratings) are shown first by default.
+- **Success rate:** the share of reviews rated Good or Easy, for today, the last 7 days, this month and all time. Graded and self-rated reviews are shown separately. Retries are left out.
+- How often each rating was given (Again, Hard, Good, Easy), and average coverage. Retries are left out.
+- **Grader agreement:** how often your final rating matched the suggested one, and in which direction you change it.
+- **Cards you've gone through:** each card's review count, retry count, last rating, success rate and next due date. It can be sorted, and the weakest cards (most Again ratings) are shown first by default.
 
 **Forecast:** cards due on each of the next 14 days, so you can see a busy day coming before you add more cards.
 
@@ -231,8 +248,9 @@ Examples:
 
 - Cards
 - Each card's FSRS state (`ts-fsrs`)
-- A review log: date, rating, time used, coverage %, `selfRated`, `sameDayRetry`
+- A review log: card, date, rating, `suggestedRating` (empty for self-rated reviews), time used, coverage %, `selfRated`, `sameDayRetry`
 - A daily cost ledger: one row per day per category (transcription, grading, AI drafting) with the estimated dollars. The monthly total for the cap is the sum of the month's rows. Days are counted in local time.
+- Settings, as one row: daily limits, `maxGapDays`, rating thresholds, the over-target grace %, and default target length per card type
 
 **Not stored:** audio, transcripts, per-bullet results. They're shown on screen and then discarded.
 
