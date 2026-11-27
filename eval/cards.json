@@ -1,0 +1,420 @@
+[
+  {
+    "id": "time-you-failed",
+    "question": "Tell me about a time you failed.",
+    "type": "behavioral",
+    "targetSeconds": 120,
+    "bullets": [
+      {
+        "text": "Situation: at my previous internship at AI Producer, an AI video startup, I worked on an open-ended project to improve AI literacy for a specific age group within Gen Z, and I proposed an after-school program at public schools.",
+        "core": false
+      },
+      {
+        "text": "Failure: the director rejected my proposal because it needed school administration approval and parent consent, which I had never checked.",
+        "core": false
+      },
+      {
+        "text": "Root cause: I started building a solution before defining the problem and checking my assumptions, so my failure wasn't just a wrong idea but a skipped step.",
+        "core": true
+      },
+      {
+        "text": "Why I missed it: I wanted to look self-sufficient, so I avoided asking the questions that would have surfaced those constraints much earlier.",
+        "core": false
+      },
+      {
+        "text": "What I changed: for the next deliverable I talked to about 5 people across marketing, dev and the AI team about rules and constraints, then wrote the intended outcome and success criteria before choosing a solution.",
+        "core": true
+      },
+      {
+        "text": "Result: my second proposal, a pipeline pairing college students with recent graduates working in the industry, was approved by the AI director and the executives.",
+        "core": false
+      }
+    ],
+    "reference": "At my previous internship at AI Producer, an AI video production startup, I worked on an open-ended project to improve AI literacy, and we wanted to target a specific age group within Gen Z. I wanted to show I could handle ambiguity on my own, so I proposed an after-school AI program at local public schools.\n\nWhen I presented it, the director rejected it. It needed approval from school administration, and parents would have to agree to us keeping their kids an extra 30 minutes to an hour after school. I hadn't checked any of that.\n\nI realized my failure wasn't just proposing the wrong solution. I'd started building a solution before I'd defined the problem or checked my assumptions. And because I wanted to look self-sufficient, I avoided the questions that would have surfaced those issues much earlier.\n\nSo for the next deliverable, I changed my process. I talked to about five people across marketing, dev and the AI team, and asked what was allowed, what regulations applied, and what outcome actually mattered. I wrote down the intended outcome and success criteria before looking at any solution.\n\nMy second proposal was a pipeline pairing college students with people in the industry who'd graduated within the last three years. The AI director and the executives approved it.\n\nWhat I took away is that rigor starts before you build anything. Since then, I try to make my assumptions explicit and check them with the right people before I commit to a solution.",
+    "tags": [
+      "behavioral",
+      "failure",
+      "ai-producer"
+    ]
+  },
+  {
+    "id": "tell-me-about-yourself",
+    "question": "Tell me about yourself.",
+    "type": "behavioral",
+    "targetSeconds": 120,
+    "bullets": [
+      {
+        "text": "Who I am: recent Vanderbilt grad in computer science and economics, working mostly on the backend, building data pipelines and AI integrations that people can understand and trust.",
+        "core": false
+      },
+      {
+        "text": "Internship: at AI Producer I owned a pipeline pairing college students with recent graduates, end to end: requirements from three teams, the spec, cross-team coordination, and an evaluation proving the matches were good.",
+        "core": false
+      },
+      {
+        "text": "Research: at Vanderbilt I worked on explainability for traffic signal controllers, helping traffic engineers see why a controller made a decision, like switching green to yellow, from its sensor inputs.",
+        "core": false
+      },
+      {
+        "text": "Common thread: a result only matters if a reviewer or committee can follow how you got there, which is the same problem as rating methodology.",
+        "core": true
+      },
+      {
+        "text": "Day to day: I use AI coding tools heavily, have built my own AI workflows to automate repetitive work, and am teaching myself structured finance.",
+        "core": false
+      },
+      {
+        "text": "Why this role: it fits how I like to work, designing and documenting methodologies, prototyping AI tools and getting analysts to adopt them, in the space between AI and finance.",
+        "core": true
+      }
+    ],
+    "reference": "I'm a recent Vanderbilt grad. I studied computer science and economics. My work sits mostly on the backend: data pipelines and AI integrations. The part of engineering I care about most is making sure the people who rely on those systems understand them and trust them.\n\nAt my last internship, at AI Producer, I owned a pipeline that paired college students with recent graduates. Coding was only part of it. I gathered requirements from the AI director, the dev team and marketing, wrote the spec, coordinated across those teams, and built an evaluation to prove the matches were actually good.\n\nAt Vanderbilt, I did research on explainability for traffic signal controllers. If a controller switched from green to yellow, I helped traffic engineers see why, and which sensor inputs drove that decision.\n\nI see that as the same problem as rating methodology: a result only matters if a committee or reviewer can follow exactly how you got there.\n\nDay to day, I use AI coding tools heavily. I've built my own AI workflows to automate the repetitive parts of my work, and I've been teaching myself structured finance from the ground up.\n\nThat's why this role fits how I like to work: designing and documenting methodologies, prototyping AI tools, and getting analysts to actually adopt them. Long term, I want to work where AI and finance meet.",
+    "tags": [
+      "behavioral",
+      "intro",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "why-morningstar",
+    "question": "Why Morningstar?",
+    "type": "behavioral",
+    "targetSeconds": 120,
+    "bullets": [
+      {
+        "text": "Hook: I've been watching how AI infrastructure is financed: data centers and even GPUs are funded with secured debt, SPVs and ABS, structures that come straight out of structured finance.",
+        "core": true
+      },
+      {
+        "text": "GPU loss assumptions: coming from software, I find the credit questions fascinating, like how to set a loss assumption for GPU collateral with only a few years of performance history and a new chip generation every two years.",
+        "core": false
+      },
+      {
+        "text": "Lease terms: another open question is whether lease terms match the asset's useful life.",
+        "core": false
+      },
+      {
+        "text": "The 2008 comparison: it gets made a lot, and the interesting work is figuring out where the analogy holds and where it doesn't.",
+        "core": false
+      },
+      {
+        "text": "Fit: that's methodology work, and it's exactly what this team does.",
+        "core": true
+      }
+    ],
+    "reference": "Part of why I applied is that I've been watching how AI infrastructure is being financed. Data centers and even GPUs are being funded with secured debt, SPVs and ABS, structures that come straight out of structured finance.\n\nComing from software, I find the credit questions fascinating. How do you set a loss assumption for collateral like GPUs, which have only a few years of performance history and a new chip generation every two years? How do lease terms match asset life?\n\nThe 2008 comparison gets made a lot. I think the interesting work is figuring out where the analogy holds and where it doesn't. That's methodology work, and it's exactly what this team does.",
+    "tags": [
+      "behavioral",
+      "why-company",
+      "morningstar",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "ai-producer-matching-1-pipeline",
+    "question": "Walk me through the matching pipeline you built at AI Producer.",
+    "type": "design",
+    "targetSeconds": 180,
+    "bullets": [
+      {
+        "text": "Hard filters: timezone, language, capacity and the ambassador's own preferences are pass/fail, so they remove candidates outright and never count toward a score.",
+        "core": false
+      },
+      {
+        "text": "Embedding searches: two searches compare profiles by meaning. Path search matches the student's target role, company and industry to where ambassadors' careers actually went. Offer search matches what the student wants to learn with what ambassadors can teach.",
+        "core": true
+      },
+      {
+        "text": "Exact searches: in parallel, a keyword search catches exact terms and an anchor search finds ambassadors who made the specific career move the student wants.",
+        "core": false
+      },
+      {
+        "text": "Fusion: the four rankings are combined into one, so someone who ranks well across several searches rises.",
+        "core": false
+      },
+      {
+        "text": "Diversification: keeps the shortlist from filling up with near-duplicates, leaving the top 20.",
+        "core": false
+      },
+      {
+        "text": "Match stage: only then does a single model call pick up to five of the 20, score each one, explain why, and cite the exact profile fields behind its reasoning.",
+        "core": true
+      }
+    ],
+    "reference": "It's a six-stage pipeline that pairs college students with ambassadors, recent graduates working in AI.\n\nFirst come hard filters: timezone, language, capacity, and the ambassador's own preferences. These are pass or fail, so they remove candidates outright and never count toward a score.\n\nNext, retrieval searches the remaining ambassadors four ways in parallel. Two are embedding searches, meaning they compare profiles by meaning rather than exact words. The path search compares where the student wants to go (target role, company, industry) with where each ambassador's career has actually gone. The offer search compares what the student wants to learn with what each ambassador can teach. Alongside those, a keyword search catches exact terms, and an anchor search looks for ambassadors who made the specific career move the student wants.\n\nThen fusion combines those four rankings into one, so someone who ranks well across several searches rises. Diversification keeps the shortlist from filling up with near-duplicates, and that leaves the top 20.\n\nOnly then comes the match stage, the single model call. It picks up to five ambassadors, scores each one, explains why, and cites the exact profile fields behind its reasoning.\n\nThe last stage is verification, which checks every model response before it's used.",
+    "tags": [
+      "design",
+      "ai-producer",
+      "series:ai-producer-matching",
+      "part:1"
+    ]
+  },
+  {
+    "id": "ai-producer-matching-2-bad-output",
+    "question": "In your AI Producer matching pipeline, how did you handle bad model output?",
+    "type": "design",
+    "targetSeconds": 180,
+    "bullets": [
+      {
+        "text": "Schema gate: every response is checked for the structure I defined, for internally consistent scores, and that every ambassador ID and citation it references actually exists.",
+        "core": true
+      },
+      {
+        "text": "Repair: if a check fails, re-prompt with the exact error, like a redline, and allow one repair attempt.",
+        "core": false
+      },
+      {
+        "text": "Fallback: if it fails again, drop the bad entry and backfill, or fall back to the retrieval ranking, clearly labeled so nobody mistakes it for the model's judgment.",
+        "core": true
+      }
+    ],
+    "reference": "The last stage of the pipeline is verification, which is where I handled bad model output.\n\nEvery response goes through a schema gate. It checks that the output matches the structure I defined, that the scores are internally consistent, and that every ambassador ID and citation it references actually exists.\n\nIf a check fails, the system re-prompts with the exact error, like a redline, and allows one repair attempt. If it fails again, the system drops the bad entry and backfills, or falls back to the retrieval ranking, labeled clearly so nobody mistakes it for the model's judgment.",
+    "tags": [
+      "design",
+      "ai-producer",
+      "series:ai-producer-matching",
+      "part:2"
+    ]
+  },
+  {
+    "id": "tricky-bug-embedding-neighbors",
+    "question": "Tell me about a tricky bug you fixed.",
+    "type": "behavioral",
+    "targetSeconds": 120,
+    "bullets": [
+      {
+        "text": "Situation: at AI Producer I built a pipeline matching college students with ambassadors, recent graduates working in AI, using embedding searches that compare profiles by meaning.",
+        "core": false
+      },
+      {
+        "text": "Symptom: early on, a student's nearest neighbors, the profiles the search scored as most similar, were other students instead of ambassadors.",
+        "core": false
+      },
+      {
+        "text": "Root cause: it wasn't the model, it was how the data was represented. Students write about what they're missing and ambassadors about what they have, so two students sounded more alike than a student and the ambassador who could help them.",
+        "core": true
+      },
+      {
+        "text": "Persona fix: I rewrote each student's profile into a query in the ambassador's vocabulary, a fixed template built from target roles, companies, industries and skills to learn, which improved match quality.",
+        "core": true
+      },
+      {
+        "text": "Ambassador-only indexes: I limited the search indexes to ambassador profiles, which made the student-to-student failure structurally impossible rather than just unlikely.",
+        "core": false
+      }
+    ],
+    "reference": "At AI Producer I built a pipeline that matched college students with ambassadors, recent graduates working in AI. Part of it used embedding searches, which compare profiles by meaning rather than exact words.\n\nEarly on, a student's nearest neighbors, meaning the profiles the embedding search scored as most similar, were other students. The bug wasn't the model at all. It was how we represented the data going in. Students write about what they're missing: 'I want to get into AI research.' Ambassadors write about what they have: 'I worked as an ML engineer.' So two students sounded more alike to each other than a student and the ambassador who could actually help them.\n\nI fixed it in two ways. First, I rewrote each student's profile into a query in the ambassador's vocabulary, which we call a persona: a fixed template built from their target roles, companies, industries and the skills they want to learn. Second, I made the search indexes ambassador-only. The first fix improved match quality. The second made the student-student failure structurally impossible rather than just unlikely.",
+    "tags": [
+      "behavioral",
+      "bug",
+      "ai-producer"
+    ]
+  },
+  {
+    "id": "ai-producer-matching-validation",
+    "question": "How did you know your AI Producer matching system was right?",
+    "type": "design",
+    "targetSeconds": 180,
+    "bullets": [
+      {
+        "text": "Schema check: every response is checked to make sure the model's output matches the structure I defined.",
+        "core": false
+      },
+      {
+        "text": "Criteria check: the output is checked against a series of criteria that catch things like missing information or inconsistent scores.",
+        "core": false
+      },
+      {
+        "text": "Referential check: every ambassador ID must be a real candidate from the shortlist, and every citation must point to a real profile field.",
+        "core": false
+      },
+      {
+        "text": "Recall: we tested with dummy profiles (50 ambassadors, 40 students) where good fits were known in advance, and measured how many of all the good fits made the top 20. Low recall means good fits are cut before the model sees them, and high recall means quality comes down to the model's choices.",
+        "core": false
+      },
+      {
+        "text": "Why high recall mattered: recall tells us which candidates the model is working with and how many of them are the relevant ones, and that can't be improved just by improving the model or the prompt.",
+        "core": true
+      },
+      {
+        "text": "Human review: like a dead letter queue, any pairing that was invalid, had inconsistent scores, or had rankings without citations goes to a queue for a real person to look at.",
+        "core": true
+      }
+    ],
+    "reference": "First, I validated the output. Every response goes through a schema check to make sure the model's output matches the structure I defined. Then I check it against a series of criteria that catch things like missing information or inconsistent scores. And every ambassador ID has to be a real candidate from the shortlist, and every citation has to point to a real profile field.\n\nSecond, I verified retrieval, because the model can only pick from the shortlist retrieval gives it. We tested with dummy profiles, 50 ambassadors and 40 students, where the good fits were known in advance. An ambassador counted as a good fit if their career path and role matched what the student was aiming for. Then I measured recall: out of all the good fits that exist, how many made the top 20. Low recall means good fits are being cut before the model ever sees them, so no model could pick them. High recall means the shortlist contains most of the good fits, and quality comes down to how well the model chooses.\n\nIt was important that we had high recall. Recall tells us which candidates the model is working with, and how many of them are the relevant ones. That's not something you improve just by improving the model or the prompt. The model can't pick someone it never sees.\n\nLastly, human review. Any pairing that was invalid, had inconsistent scores, or had rankings without citations goes to a review queue, similar to a dead letter queue, for a real person to look at.",
+    "tags": [
+      "design",
+      "ai-producer",
+      "evaluation"
+    ]
+  },
+  {
+    "id": "spv-securitization",
+    "question": "What is an SPV and why is it used in a securitization?",
+    "type": "concept",
+    "targetSeconds": 60,
+    "bullets": [
+      {
+        "text": "Definition: an SPV (special purpose vehicle) is a separate legal entity, usually a trust or LLC, set up only to buy a pool of assets and issue securities backed by them.",
+        "core": true
+      },
+      {
+        "text": "True sale: the originator legally sells the assets to the SPV, so they no longer belong to the originator.",
+        "core": false
+      },
+      {
+        "text": "Bankruptcy remoteness: if the originator goes bankrupt, its creditors can't reach the assets in the SPV, so investors are exposed only to how the assets perform.",
+        "core": true
+      }
+    ],
+    "reference": "An SPV, or special purpose vehicle, is a separate legal entity, usually a trust or LLC, set up for one job: to buy a pool of assets, like auto loans, and issue securities backed by them.\n\nThe main reason it's used is bankruptcy remoteness. The originator sells the assets to the SPV in a true sale, so they no longer belong to the originator. If the originator goes bankrupt, its creditors can't touch those assets. Investors are only exposed to how the loans perform.",
+    "tags": [
+      "concept",
+      "structured-finance",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "credit-rating-agency",
+    "question": "What does a credit rating agency do, and how does it rate a securitization?",
+    "type": "concept",
+    "targetSeconds": 60,
+    "bullets": [
+      {
+        "text": "Purpose: an independent firm that grades how likely a borrower or bond is to be repaid in full and on time, with letter grades from AAA down to D.",
+        "core": true
+      },
+      {
+        "text": "Why it matters: investors use ratings to decide what to buy and what interest to demand, and many funds can only hold investment-grade bonds, BBB-minus and above.",
+        "core": false
+      },
+      {
+        "text": "Loss estimate: for a securitization, the agency estimates how many loans in the pool will default and how much will be lost, including in a bad economy.",
+        "core": true
+      },
+      {
+        "text": "Legal structure: it checks for a true sale and a bankruptcy-remote SPV, so the bonds depend only on the pool.",
+        "core": false
+      },
+      {
+        "text": "Tranche ratings: each tranche is rated on how much loss it can absorb before it misses a payment, so the most protected one can be AAA.",
+        "core": false
+      },
+      {
+        "text": "Methodology: the whole process follows the agency's published methodology for that asset class.",
+        "core": false
+      }
+    ],
+    "reference": "A credit rating agency is an independent firm that grades how likely a borrower or a bond is to be paid back in full and on time, with letter grades from AAA down to D. Investors use those grades to decide what to buy and how much interest to demand, and many funds can only hold investment-grade bonds, BBB-minus and above.\n\nTo rate a securitization, the agency first estimates how many loans in the pool will default and how much will be lost, including in a bad economy. It checks the legal structure: a true sale, and an SPV that's bankruptcy-remote. Then it rates each tranche on how much loss it can absorb before it misses a payment, so the most protected tranche can be AAA. All of this follows the agency's published methodology for that asset class.",
+    "tags": [
+      "concept",
+      "structured-finance",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "securitization-parties",
+    "question": "Who are the main parties in a securitization, and what does each one do?",
+    "type": "concept",
+    "targetSeconds": 60,
+    "bullets": [
+      {
+        "text": "Originator: makes the loans in the first place, like a car lender, and sells them to the SPV to get cash now instead of waiting years for repayment.",
+        "core": true
+      },
+      {
+        "text": "SPV (issuer): the separate legal entity that buys the loans from the originator and issues the bonds backed by them.",
+        "core": true
+      },
+      {
+        "text": "Servicer: collects monthly payments from borrowers, chases late payers and passes the cash along, and is often the originator itself.",
+        "core": false
+      },
+      {
+        "text": "Underwriter: usually an investment bank, it structures the deal and sells the bonds to investors.",
+        "core": false
+      },
+      {
+        "text": "Trustee: represents the investors, oversees the servicer, and makes sure cash is paid out in the right order.",
+        "core": false
+      },
+      {
+        "text": "Investors: buy the bonds, choosing a tranche based on how much risk they want to take.",
+        "core": false
+      }
+    ],
+    "reference": "The originator makes the loans in the first place, like a car lender, and sells them to the SPV to get cash now. The SPV, or issuer, is the separate legal entity that buys the loans and issues bonds backed by them. The servicer collects the monthly payments from borrowers, chases late payers and passes the cash along. It's often the originator itself. The underwriter, usually an investment bank, structures the deal and sells the bonds to investors. The trustee represents the investors: it watches over the deal, oversees the servicer, and makes sure cash is paid out in the right order. Investors buy the bonds, choosing a tranche based on how much risk they want. And rating agencies rate each tranche.",
+    "tags": [
+      "concept",
+      "structured-finance",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "credit-enhancement",
+    "question": "What is credit enhancement, and what are the common types?",
+    "type": "concept",
+    "targetSeconds": 60,
+    "bullets": [
+      {
+        "text": "Definition: protection built into a securitization so investors still get paid when some loans default, which is what lets ordinary loans support highly rated bonds.",
+        "core": true
+      },
+      {
+        "text": "Subordination: junior tranches absorb losses before senior ones, so the senior tranche stays whole until the junior ones are wiped out.",
+        "core": true
+      },
+      {
+        "text": "Overcollateralization: the pool holds more loans than the bonds issued, like $110M of loans behind $100M of bonds, so the first losses hit no investor.",
+        "core": false
+      },
+      {
+        "text": "Reserve account: cash set aside at the start to cover payment shortfalls.",
+        "core": false
+      },
+      {
+        "text": "Excess spread: borrowers pay more interest than the bonds pay investors, and that leftover absorbs losses first.",
+        "core": false
+      },
+      {
+        "text": "Link to ratings: the more enhancement below a tranche, the more loss it can survive, so agencies size enhancement to the rating each tranche needs.",
+        "core": false
+      }
+    ],
+    "reference": "Credit enhancement is the protection built into a securitization so investors still get paid when some loans default. It’s what lets a pool of ordinary loans support AAA bonds.\n\nThe main types: subordination, where junior tranches absorb losses before senior ones. Overcollateralization, where the pool holds more loans than the bonds issued, say $110 million of loans behind $100 million of bonds, so the first $10 million of losses hurts no one. A reserve account, which is cash set aside at the start to cover shortfalls. And excess spread: borrowers pay more interest than the bonds pay investors, and that leftover absorbs losses first.\n\nRating agencies size these: the more enhancement below a tranche, the more loss it can survive, and the higher its rating.",
+    "tags": [
+      "concept",
+      "structured-finance",
+      "role:ratings-ai"
+    ]
+  },
+  {
+    "id": "bond-prices-interest-rates",
+    "question": "Why do bond prices fall when interest rates rise?",
+    "type": "concept",
+    "targetSeconds": 60,
+    "bullets": [
+      {
+        "text": "Fixed payments: a bond’s coupon is set when it’s issued, so its payments don’t rise when market rates do.",
+        "core": true
+      },
+      {
+        "text": "Competing with new bonds: if rates rise from 3% to 5%, no one pays full price for a 3% bond, so its price drops until a buyer’s return matches 5%.",
+        "core": true
+      },
+      {
+        "text": "Present value: a bond’s price is its future payments discounted at current rates, and a higher discount rate makes those payments worth less today.",
+        "core": false
+      },
+      {
+        "text": "Duration: longer bonds fall more because more of their payments are far in the future, and that sensitivity is called duration.",
+        "core": false
+      }
+    ],
+    "reference": "A bond pays a fixed coupon. Say I hold a bond paying 3% a year, and then rates rise so new bonds pay 5%. Nobody will pay full price for my 3% bond when they can buy a new one paying 5%, so its price has to drop until its return to a new buyer matches 5%.\n\nAnother way to say it: a bond’s price is the present value of its future payments, discounted at current market rates. A higher discount rate makes those fixed payments worth less today.\n\nThe effect is bigger for longer bonds, because more of their payments are far in the future. That sensitivity is called duration.",
+    "tags": [
+      "concept",
+      "fixed-income"
+    ]
+  }
+]
